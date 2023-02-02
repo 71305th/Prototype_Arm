@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class ArmAdjust extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ArmSubsystem m_subsystem;
+  private final ArmSubsystem m_arm;
 
   /**
    * Creates a new ExampleCommand.
@@ -18,7 +18,7 @@ public class ArmAdjust extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
   public ArmAdjust(ArmSubsystem subsystem) {
-    m_subsystem = subsystem;
+    m_arm = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
