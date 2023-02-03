@@ -14,7 +14,7 @@ public class ArmAdjust extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ArmSubsystem m_arm;
   private final String status;
-  
+  private final Joystick OperatorJoystick = new Joystick(1);
 
   /**
    * Creates a new ExampleCommand.
@@ -37,10 +37,10 @@ public class ArmAdjust extends CommandBase {
   @Override
   public void execute() {
     System.out.println(status);
-    if( status == "lowerDrive" )  m_arm.lowerDrive();
-    if( status == "upperDrive ")  m_arm.upperDrive();
-    if( status == "upperSpin ")  m_arm.upperSpin();
-    if( status == "SpinningDrive ")  m_arm.spinningDrive();
+    if( status == "lowerDrive" )  m_arm.lowerDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y));
+    if( status == "upperDrive ")  m_arm.upperDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_Y));
+    if( status == "upperSpin ")  m_arm.upperSpin(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_X));
+    if( status == "SpinningDrive ")  m_arm.spinningDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_X));
   }
 
   // Called once the command ends or is interrupted.

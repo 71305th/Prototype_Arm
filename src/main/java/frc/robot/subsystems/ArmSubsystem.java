@@ -63,20 +63,20 @@ public class ArmSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run during simulation
   }
 
-  public void lowerDrive() {
-    LowerLeft.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y));
-    LowerRight.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y));
+  public void lowerDrive(Double speed) {
+    LowerLeft.set(speed);
+    LowerRight.set(speed);
   }
 
-  public void upperDrive() {
-    UpperArm.set(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_Y));
+  public void upperDrive(Double speed) {
+    UpperArm.set(speed);
   }
 
-  public void upperSpin(){
-    UpperSpinner.set(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_X));
+  public void upperSpin(Double speed){
+    UpperSpinner.set(speed);
   }
 
-  public void spinningDrive() {
-    SpinningPlate.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_X));
+  public void spinningDrive(Double speed) {
+    SpinningPlate.set(speed);
   }
 }

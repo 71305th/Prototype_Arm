@@ -27,10 +27,10 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
 
-    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.lowerDrive(); }, m_arm));
-    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.upperDrive(); }, m_arm));
-    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.upperSpin(); }, m_arm));
-    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.spinningDrive(); }, m_arm));
+    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.lowerDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y)); }, m_arm));
+    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.upperDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_Y)); }, m_arm));
+    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.upperSpin(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_X)); }, m_arm));
+    m_arm.setDefaultCommand(new RunCommand(()->{ m_arm.spinningDrive(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_X)); }, m_arm));
   }
 
   private void configureBindings() {
