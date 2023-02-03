@@ -16,8 +16,8 @@ public final class Constants {
   public final class ArmConstants {
         public static final int LowerLeftMotor = 0;
         public static final int LowerRightMotor = 0;
-        public static final int UpperLeftMotor = 0;
-        public static final int UpperRightMotor = 0;
+        public static final int UpperArmMotor = 0;
+        public static final int UpperSpinnerMotor = 0;
         public static final int SpinningPlateMotor = 0;
   } 
 
