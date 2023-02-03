@@ -6,24 +6,28 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenixpro.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.ArmConstants;;
+import frc.robot.Constants.ArmConstants;
+import frc.robot.Constants.OIConstants;;
 
 public class ArmSubsystem extends SubsystemBase {
 
+  private final Joystick OperatorJoystick = new Joystick(1);
+  
   public ArmSubsystem() {
-    lowerLeft.setInverted(false);
-    lowerRight.setInverted(true);
-    upperLeft.setInverted(false);
-    upperRight.setInverted(true);
+    LowerLeft.setInverted(false);
+    LowerRight.setInverted(true);
+    UpperArm.setInverted(false);
+    UpperSpinner.setInverted(true);
   }
 
-  TalonFX lowerLeft = new TalonFX(ArmConstants.LowerLeftMotor);
-  TalonFX lowerRight = new TalonFX(ArmConstants.LowerRightMotor);
-  TalonFX upperLeft = new TalonFX(ArmConstants.UpperLeftMotor);
-  TalonFX upperRight = new TalonFX(ArmConstants.UpperRightMotor);
-  TalonFX spinningPlate = new TalonFX(ArmConstants.SpinningPlateMotor);
+  TalonFX LowerLeft = new TalonFX(ArmConstants.LowerLeftMotor);
+  TalonFX LowerRight = new TalonFX(ArmConstants.LowerRightMotor);
+  TalonFX UpperArm = new TalonFX(ArmConstants.UpperArmMotor);
+  TalonFX UpperSpinner = new TalonFX(ArmConstants.UpperSpinnerMotor);
+  TalonFX SpinningPlate = new TalonFX(ArmConstants.SpinningPlateMotor);
 
   /**
    * Example command factory method.
@@ -59,17 +63,20 @@ public class ArmSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run during simulation
   }
 
-  public void lowerDrive(double speed) {
-    lowerLeft.set(speed);
-    lowerRight.set(speed);
+  public void lowerDrive() {
+    LowerLeft.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y));
+    LowerRight.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_Y));
   }
 
-  public void upperDrive(double speed) {
-    upperLeft.set(speed);
-    upperRight.set(speed);
+  public void upperDrive() {
+    UpperArm.set(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_Y));
   }
 
-  public void spinningDrive(double speed) {
-    spinningPlate.set(speed);
+  public void upperSpin(){
+    UpperSpinner.set(0.1*OperatorJoystick.getRawAxis(OIConstants.leftStick_X));
+  }
+
+  public void spinningDrive() {
+    SpinningPlate.set(0.1*OperatorJoystick.getRawAxis(OIConstants.rightStick_X));
   }
 }
